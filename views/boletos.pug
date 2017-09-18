@@ -1,0 +1,20 @@
+- current = 'boletos'
+doctype html
+html(lang='en')
+  head
+    include head.pug
+  body
+    include nav.pug
+    .container
+      .page-header
+          h1 Boletos
+      //div(style='display: block; max-width: 400px ;margin: 0 auto 50px auto;')
+      .col-lg-12
+        .input-group
+          input.form-control(type='text', placeholder='Digite seu nome...')
+          span.input-group-btn
+            a(href='/student-search')
+              button.btn.btn-default(type='button') Buscar
+        // /input-group
+      // /.col-lg-6
+include import_scripts.pug

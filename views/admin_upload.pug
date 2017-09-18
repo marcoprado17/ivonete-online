@@ -1,0 +1,15 @@
+- current = 'admin_upload'
+doctype html
+html(lang='en')
+  head
+    include head.pug
+    link(rel='stylesheet', href='stylesheets/admin_upload.css')
+  body
+    include nav.pug
+    .container
+      .page-header
+        h1 Upload do boleto
+      .upload-file-container
+        label Selecione o arquivo
+        input(type='file')
+include import_scripts.pug

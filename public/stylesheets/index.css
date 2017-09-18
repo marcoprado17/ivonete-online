@@ -1,0 +1,22 @@
+.imgs-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+
+.imgs-container img {
+	align-self: center
+}
+
+img.boleto {
+	max-height: 240px;
+	max-width: 280px;
+	margin-bottom: 20px;
+}
+
+img.h8 {
+	max-height: 240px;
+	max-width: 280px;
+	margin-bottom: 20px;
+}

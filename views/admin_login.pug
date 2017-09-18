@@ -1,0 +1,19 @@
+- current = 'admin_login'
+doctype html
+html(lang='en')
+  head
+    include head.pug
+    link(rel='stylesheet', href='stylesheets/admin_login.css')
+  body
+    include nav.pug
+    .container
+      .panel.panel-default
+        .panel-heading Login do Admin
+        .panel-body
+          form(method='post')
+            if (typeof(invalid_login) !== 'undefined')
+              div(class='alert alert-danger') Email ou senha incorretos. Tente novamente.
+            input#inputEmail.form-control(type='email', placeholder='Email', required='', autofocus='', name='email')
+            input#inputPassword.form-control(type='password', placeholder='Senha', required='', name='password')
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Entrar
+include import_scripts.pug

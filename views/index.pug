@@ -1,0 +1,17 @@
+- current = 'index'
+doctype html
+html(lang='en')
+  head
+    include head.pug
+    link(rel='stylesheet', href='stylesheets/index.css')
+  body
+    include nav.pug
+    .container
+      .page-header
+        h1 Home
+      p
+        | O Ivonete Online é um sistema no qual o aluno pode encontrar facilmente os boletos do H8. Para tanto, basta acessar a aba Boletos e buscar pelo seu nome.
+      .container.imgs-container
+        img.boleto(src='images/boleto.png')
+        img.h8(src='images/h8.jpg')
+include import_scripts.pug
