@@ -7,8 +7,8 @@
 6 silly lifecycle ivonete-online@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle ivonete-online@0.0.0~start: ivonete-online@0.0.0
 8 verbose lifecycle ivonete-online@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle ivonete-online@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/marco/Documents/projectv2/ivonete_online/node_modules/.bin:/home/marco/bin:/home/marco/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-10 verbose lifecycle ivonete-online@0.0.0~start: CWD: /home/marco/Documents/projectv2/ivonete_online
+9 verbose lifecycle ivonete-online@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/marco/Documents/ivonete-online/node_modules/.bin:/home/marco/bin:/home/marco/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+10 verbose lifecycle ivonete-online@0.0.0~start: CWD: /home/marco/Documents/ivonete-online
 11 silly lifecycle ivonete-online@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle ivonete-online@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle ivonete-online@0.0.0~start: Failed to exec start script
@@ -23,8 +23,8 @@
 14 verbose stack     at maybeClose (internal/child_process.js:920:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
 15 verbose pkgid ivonete-online@0.0.0
-16 verbose cwd /home/marco/Documents/projectv2/ivonete_online
-17 error Linux 4.4.0-93-generic
+16 verbose cwd /home/marco/Documents/ivonete-online
+17 error Linux 4.4.0-98-generic
 18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 19 error node v6.11.3
 20 error npm  v3.10.10
