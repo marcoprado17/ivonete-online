@@ -32,8 +32,40 @@ router.get('/boletos', function(req, res, next) {
 	res.render('boletos');
 });
 
+router.post('/boletos', function(req, res, next) {
+	var studentName = req.body.student_name;
+	res.redirect('student-search?student_name='+studentName);
+});
+
 router.get('/student-search', function(req, res, next) {
-	res.render('student_search');
+	var studentName = req.param('student_name', null);
+
+	var results = [];
+
+	if(studentName === null){
+		return res.render('student_search', {'results': results});
+	}
+
+  	// Get a Postgres client from the connection pool
+  	pg.connect(connectionString, (err, client, done) => {
+    	// Handle connection errors
+    	if(err) {
+	    	done();
+	    	console.log(err);
+	    	return res.status(500).json({success: false});
+    	}
+	    // SQL Query > Select Data
+	    var query = client.query('SELECT * FROM student WHERE student.name like $1 ORDER BY student.name', ['%'+studentName+'%']);
+	    // Stream results back one row at a time
+	    query.on('row', (row) => {
+	    	results.push(row);
+	    });
+	    // After all data is returned, close connection and return results
+	    query.on('end', () => {
+	    	done();
+	    	return res.render('student_search', {'student_name': studentName, 'results': results});
+	    });
+	});
 });
 
 router.get('/student-boletos', function(req, res, next) {
@@ -62,11 +94,11 @@ router.post('/upsert-student', function(req, res, next) {
     client.query('INSERT INTO student(cpf, name) values($1, $2) ON CONFLICT(cpf) DO UPDATE SET name = $2 WHERE student.cpf = $1',
     	[cpf, name], 
     	function(err, result) {
-            if (err) {
-                console.log(err);
-            }
-        });
-	});
+    		if (err) {
+    			console.log(err);
+    		}
+    	});
+});
 
 	res.redirect('student-search');
 });
@@ -100,11 +132,11 @@ router.post('/upsert-bill', function(req, res, next) {
     client.query('INSERT INTO bill(year, month, student_cpf, value, src) values($1, $2, $3, $4, $5) ON CONFLICT(year, month, student_cpf) DO UPDATE SET value = $4, src = $5 WHERE bill.year = $1 AND bill.month = $2 AND bill.student_cpf = $3',
     	[year, month, studentCpf, value, src], 
     	function(err, result) {
-            if (err) {
-                console.log(err);
-            }
-        });
-	});
+    		if (err) {
+    			console.log(err);
+    		}
+    	});
+});
 
 	res.redirect('student-boletos');
 });

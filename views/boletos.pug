@@ -1,20 +1,19 @@
-- current = 'boletos'
+- current = 'my_bills'
 doctype html
 html(lang='en')
   head
     include head.pug
+    link(rel='stylesheet', href='stylesheets/boletos.css')
   body
     include nav.pug
     .container
       .page-header
-          h1 Boletos
+          h1 Meus Boletos
       //div(style='display: block; max-width: 400px ;margin: 0 auto 50px auto;')
       .col-lg-12
-        .input-group
-          input.form-control(type='text', placeholder='Digite seu nome...')
-          span.input-group-btn
-            a(href='/student-search')
-              button.btn.btn-default(type='button') Buscar
+        form(method='post')
+          input.form-control(type='text', placeholder='Digite seu nome...', name='student_name')
+          button.btn.btn-lg.btn-primary.btn-block(type='submit') Buscar
         // /input-group
       // /.col-lg-6
 include import_scripts.pug
