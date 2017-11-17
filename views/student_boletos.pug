@@ -30,7 +30,7 @@ html(lang='en')
                     td #{row_data.month}
                     td #{row_data.value}
                     td
-                      button.btn.btn-default(type='submit') Baixar
+                      a.btn.btn-default(href='/download?src='+row_data.src) Baixar
           else
             p Nenhum boleto foi encontrado para o aluno com cpf #{student_cpf}.
 include import_scripts.pug

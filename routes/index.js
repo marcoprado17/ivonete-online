@@ -109,6 +109,11 @@ router.get('/student-boletos', function(req, res, next) {
 	});
 });
 
+router.get('/download', function(req, res){
+	var src = req.param('src', null);
+	res.download(src);
+});
+
 router.post('/upsert-student', function(req, res, next) {
 	var cpf = req.param('cpf', null);
 	var name = req.param('name', null);

@@ -7,6 +7,7 @@ sudo apt-get install postgresql-9.5 -y;
 sudo npm install;
 
 sudo mkdir uploaded_files;
+sudo mkdir bill_files;
 
 sudo adduser --quiet --disabled-password --gecos "Ivonete DB" ivonetedb
 echo "ivonetedb:abcdef" | sudo chpasswd
