@@ -28,6 +28,15 @@ router.get('/admin-upload', function(req, res, next) {
 	res.render('admin_upload');
 });
 
+router.post('/admin-upload', function(req, res, next) {
+	if (!req.files || !('boletos' in req.files))
+    	return res.status(400).send('Nenhum arquivo foi encontrado.');
+
+    req.files.boletos.mv('uploaded_files/boletos.pdf');
+
+	res.redirect('/');
+});
+
 router.get('/boletos', function(req, res, next) {
 	res.render('boletos');
 });

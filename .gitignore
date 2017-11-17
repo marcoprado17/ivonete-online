@@ -2,3 +2,4 @@ node_modules/
 *.log
 .vagrant/
 response.txt
+uploaded_files/
