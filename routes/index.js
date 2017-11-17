@@ -69,7 +69,35 @@ router.get('/student-search', function(req, res, next) {
 });
 
 router.get('/student-boletos', function(req, res, next) {
-	res.render('student_boletos');
+	var studentCpf = req.param('student_cpf', null);
+
+	if(studentCpf === null){
+		return res.status(404).send("Not found");
+	}
+
+	var results = [];
+
+  	// Get a Postgres client from the connection pool
+  	pg.connect(connectionString, (err, client, done) => {
+    	// Handle connection errors
+    	if(err) {
+	    	done();
+	    	console.log(err);
+	    	return res.status(500).json({success: false});
+    	}
+	    // SQL Query > Select Data
+	    var query = client.query('SELECT * FROM bill, student WHERE bill.student_cpf = $1 AND bill.student_cpf = student.cpf ORDER BY bill.year DESC, bill.month DESC', [studentCpf]);
+	    // Stream results back one row at a time
+	    query.on('row', (row) => {
+	    	results.push(row);
+	    });
+	    // After all data is returned, close connection and return results
+	    query.on('end', () => {
+	    	done();
+	    	console.log(results);
+	    	return res.render('student_boletos', {'results': results, 'student_cpf': studentCpf});
+	    });
+	});
 });
 
 router.post('/upsert-student', function(req, res, next) {

@@ -8,29 +8,29 @@ html(lang='en')
     .container
       .panel.panel-default
         .panel-heading
-          h3
-            | Busca aluno
+          if results.length > 0
+            h3
+              | Meus Boletos (#{results[0].name})
+          else
+            h3
+              | Meus Boletos (#{student_cpf})
         .panel-body
-          table.table.table-bordered(style='width: 100%;')
-            thead
-              tr
-                th Data
-                th Valor (R$)
-                th
-            tbody
-              tr
-                td 10/08/2020
-                td 200.00
-                td
-                  button.btn.btn-default(type='submit') Baixar
-              tr
-                td 29/09/2018
-                td 167.00
-                td
-                  button.btn.btn-default(type='submit') Baixar
-              tr
-                td 30/03/2019
-                td 80.00
-                td
-                  button.btn.btn-default(type='submit') Baixar
+          if results.length > 0
+            table.table.table-bordered(style='width: 100%;')
+              thead
+                tr
+                  th Ano
+                  th Mês
+                  th Valor (R$)
+                  th
+              tbody
+                for row_data in results
+                  tr
+                    td #{row_data.year}
+                    td #{row_data.month}
+                    td #{row_data.value}
+                    td
+                      button.btn.btn-default(type='submit') Baixar
+          else
+            p Nenhum boleto foi encontrado para o aluno com cpf #{student_cpf}.
 include import_scripts.pug
