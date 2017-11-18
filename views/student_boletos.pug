@@ -10,10 +10,10 @@ html(lang='en')
         .panel-heading
           if results.length > 0
             h3
-              | Meus Boletos (#{results[0].name})
+              | Meus Boletos (#{results[0].student_name})
           else
             h3
-              | Meus Boletos (#{student_cpf})
+              | Meus Boletos (#{student_name})
         .panel-body
           if results.length > 0
             table.table.table-bordered(style='width: 100%;')
@@ -21,16 +21,14 @@ html(lang='en')
                 tr
                   th Ano
                   th Mês
-                  th Valor (R$)
                   th
               tbody
                 for row_data in results
                   tr
                     td #{row_data.year}
                     td #{row_data.month}
-                    td #{row_data.value}
                     td
                       a.btn.btn-default(href='/download?src='+row_data.src) Baixar
           else
-            p Nenhum boleto foi encontrado para o aluno com cpf #{student_cpf}.
+            p Nenhum boleto foi encontrado para o aluno com cpf #{student_name}.
 include import_scripts.pug

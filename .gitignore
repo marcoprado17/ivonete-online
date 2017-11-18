@@ -2,5 +2,5 @@ node_modules/
 *.log
 .vagrant/
 response.txt
-uploaded_files/
-bill_files/
+routes/boletos.pdf
+output/*.pdf

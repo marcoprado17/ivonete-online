@@ -17,10 +17,10 @@ html(lang='en')
                 tr
                   th Nome do aluno
               tbody
-                each student in results
+                each row_data in results
                   tr
                     td 
-                      a(href='/student-boletos?student_cpf='+student.cpf) #{student.name}
+                      a(href='/student-boletos?student_name='+row_data.student_name) #{row_data.student_name}
           else
             p Nenhum aluno com esse nome foi encontrado em nosso banco de dados.
 include import_scripts.pug
